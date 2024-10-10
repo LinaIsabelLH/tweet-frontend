@@ -11,7 +11,7 @@
 }
 
 .login {
-  padding: 30px;
+  padding: 20px;
 }
 
 .signup {
@@ -48,4 +48,12 @@
 
 .titre {
     font-size: 70px;
+}
+
+.login > h3 {
+    font-size : 30px;
+}
+
+.login > h5 {
+    font-size: 20px;
 }

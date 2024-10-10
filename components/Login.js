@@ -1,9 +1,22 @@
 import styles from "../styles/Login.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+// import { Modal } from 'antd';
+
 
 function Login() {
-  return (
+  
+    const signUpModal = () => {
+        <Modal>
+            
+        </Modal>
+    }
+  
+  
+  
+  
+  
+    return (
     <div className={styles.main}>
       <div className={styles.login}>
         <FontAwesomeIcon
@@ -14,7 +27,7 @@ function Login() {
         />
         <h1 className={styles.titre}>See what's <div>happening</div></h1>
         <h3>Join Hackatweet today.</h3>
-        <button className={styles.signup}>Sign up</button>
+        <button onClick={() => signUpModal()} className={styles.signup}>Sign up</button>
         <h5>Already have an account?</h5>
         <button className={styles.signin}>Sign in</button>
       </div>
