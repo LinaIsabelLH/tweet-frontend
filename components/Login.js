@@ -18,9 +18,14 @@ function Login() {
     setIsModalOpenSignUp(true);
   };
 
-  const signInModal =()=>{
+  const signInModal = () => {
     setIsModalOpenSignIn(true);
   }
+
+  const handleCancel = () => {
+    setIsModalOpenSignIn(false);
+    setIsModalOpenSignUp(false);
+  };
 
   
     return (
@@ -39,12 +44,14 @@ function Login() {
         <button onClick={() => signUpModal()} className={styles.signup}>
           Sign up
         </button>
-        <Modal open={isModalOpenSignUp} footer={null} closeIcon={null}>
+        <Modal open={isModalOpenSignUp} footer={null} closeIcon={null} maskClosable={true}
+          onCancel={handleCancel}>
           <SignUp />
         </Modal>
         <h5>Already have an account?</h5>
         <button onClick={() => signInModal()}className={styles.signin}>Sign in</button>
-        <Modal open={isModalOpenSignIn} footer={null} closeIcon={null}>
+        <Modal open={isModalOpenSignIn} footer={null} closeIcon={null} maskClosable={true}
+          onCancel={handleCancel}>
           <SignIn />
         </Modal>
       </div>
