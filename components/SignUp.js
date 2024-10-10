@@ -27,7 +27,7 @@ function SignUp() {
           setSignUpFirstname('');
           setSignUpUsername('');
           setSignUpPassword('');
-    
+          window.location.assign("/tweets")
   } } ) }
 
 
@@ -56,7 +56,7 @@ function SignUp() {
         onChange={(e) => setSignUpUsername(e.target.value)}
       ></input>
       <input
-        type="text"
+        type="password"
         placeholder="Password"
         id="signUpPassword"
         value={signUpPassword}

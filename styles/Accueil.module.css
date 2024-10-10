@@ -1,0 +1,45 @@
+.main {
+    background-color: #151d27;
+    flex-direction: column;
+    display: flex;
+    width: 25vw;
+    height: 100vh;
+    align-items: flex-start;
+    border-right: 2px solid gray;
+    justify-content: space-between;
+} 
+
+.logo {
+    padding: 20px;
+    cursor: pointer;
+}
+
+.bottom {
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.oeuf {
+    border-radius: 50%;
+}
+
+.user {
+    height: 5vh;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+}
+
+.button {
+    margin-top: 30px;
+    width: 70px;
+    border: solid 1px gray;
+    background-color: #151d27;
+    color: whitesmoke;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}

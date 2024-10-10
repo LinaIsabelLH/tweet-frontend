@@ -34,7 +34,7 @@ function Login() {
         <FontAwesomeIcon
           icon={faTwitter}
           rotation={180}
-          size={"2xl"}
+          size={"5x"}
           style={{ color: "#ffffff" }}
         />
         <h1 className={styles.titre}>

@@ -29,6 +29,7 @@ export default function SignIn() {
               dispatch(login({ username: signInUsername, token: data.token }));
               setSignInUsername('');
               setSignInPassword('');
+              window.location.assign("/tweets")
             }
           }) }
       
@@ -51,7 +52,7 @@ export default function SignIn() {
         onChange={(e) => setSignInUsername(e.target.value)}
       ></input>
       <input
-        type="text"
+        type="password"
         placeholder="Password"
         id="signInPassword"
         value={signInPassword}
