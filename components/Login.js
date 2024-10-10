@@ -96,7 +96,6 @@ function Login() {
           closeIcon={null}
           maskClosable={true}
           onCancel={handleCancel}
-          bodyStyle={{ backgroundColor: "#151d26" }}
         >
           <SignUp handleRegister={handleRegister} />
         </Modal>
