@@ -5,21 +5,15 @@ import { Modal } from "antd";
 import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { login } from '../reducers/user';
 
+
 function Login() {
+
   const [isModalOpenSignUp, setIsModalOpenSignUp] = useState(false);
   const [isModalOpenSignIn, setIsModalOpenSignIn] = useState(false);
-  const dispatch = useDispatch();
 
-  const [signUpFirstname, setSignUpFirstname] = useState("");
-  const [signUpUsername, setSignUpUsername] = useState("");
-  const [signUpPassword, setSignUpPassword] = useState("");
-
-  const [signInUsername, setSignInUsername] = useState("");
-  const [signInPassword, setSignInPassword] = useState("");
-
+  
   const signUpModal = () => {
     setIsModalOpenSignUp(true);
   };
@@ -28,37 +22,6 @@ function Login() {
     setIsModalOpenSignIn(true);
   }
 
-    const handleRegister = () => {
-      fetch('http://localhost:3000/users/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname: signUpFirstname, username: signUpUsername, password: signUpPassword }),
-      }).then(response => response.json())
-        .then(data => {
-          if (data.result) {
-            dispatch(login({ username: signUpUsername, token: data.token }));
-            setSignUpFirstname('');
-            setSignUpUsername('');
-            setSignUpPassword('');
-            setIsModalOpenSignUp(false);
-    } } )};
-
-    const handleConnection = () => {
-
-      fetch('http://localhost:3000/users/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: signInUsername, password: signInPassword }),
-      }).then(response => response.json())
-        .then(data => {
-          if (data.result) {
-            dispatch(login({ username: signInUsername, token: data.token }));
-            setSignInUsername('');
-            setSignInPassword('');
-            setIsModalOpenSignIn(false);
-          }
-        });
-    };
   
     return (
     <div className={styles.main}>
@@ -77,12 +40,12 @@ function Login() {
           Sign up
         </button>
         <Modal open={isModalOpenSignUp} footer={null} closeIcon={null}>
-          <SignUp handleRegister={handleRegister} />
+          <SignUp />
         </Modal>
         <h5>Already have an account?</h5>
         <button onClick={() => signInModal()}className={styles.signin}>Sign in</button>
         <Modal open={isModalOpenSignIn} footer={null} closeIcon={null}>
-          <SignIn handleConnection={handleConnection} />
+          <SignIn />
         </Modal>
       </div>
     </div>
