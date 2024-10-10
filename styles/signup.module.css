@@ -1,0 +1,21 @@
+.singUpContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #151d27;
+    color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+}
+
+.singUpContainer > input {
+    width: 50%;
+    background-color: #151d27;
+    border: solid 1px whitesmoke;
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+}
+
+.singUpContainer > button {
+    
+}

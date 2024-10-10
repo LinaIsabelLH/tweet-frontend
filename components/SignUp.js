@@ -1,9 +1,17 @@
 import { Modal } from "antd";
 import styles from "../styles/signup.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 function SignUp() {
   return (
     <div className={styles.singUpContainer}>
+      <FontAwesomeIcon
+          icon={faTwitter}
+          rotation={180}
+          size={"2xl"}
+          style={{ color: "#ffffff" }}
+        />
       <h1>Create your Hackatweet account</h1>
       <input
         type="text"
@@ -16,7 +24,7 @@ function SignUp() {
         type="text"
         placeholder="Username"
         id="signUpUsername"
-       // value={signInUsername}
+       // value={signInUsername} 
         onChange={(e) => setSignUpUsername(e.target.value)}
       ></input>
       <input
