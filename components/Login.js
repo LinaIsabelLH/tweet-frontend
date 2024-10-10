@@ -3,13 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Modal } from "antd";
 import signUp from "./SignUp";
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 // import { Modal } from 'antd';
 
 function Login() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const dispatch = useDispatch();
+
+  const[signUpFirstname, setSignUpFirstname]= useState('');
+  const [signUpUsername, setSignUpUsername] = useState('');
+	const [signUpPassword, setSignUpPassword] = useState('');
+
+	const [signInUsername, setSignInUsername] = useState('');
+	const [signInPassword, setSignInPassword] = useState('');
+
     const signUpModal = () => {
       setIsModalOpen(true);
     }
@@ -23,6 +33,7 @@ function Login() {
         .then(data => {
           if (data.result) {
             dispatch(login({ username: signUpUsername, token: data.token }));
+            setSignUpFirstname('');
             setSignUpUsername('');
             setSignUpPassword('');
 
@@ -30,7 +41,7 @@ function Login() {
 
 
       setIsModalOpen(false);
-    };
+    } } )};
   
     return (
     <div className={styles.main}>
