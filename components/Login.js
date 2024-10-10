@@ -23,43 +23,58 @@ function Login() {
     setIsModalOpenSignUp(true);
   };
 
-  const signInModal =()=>{
+  const signInModal = () => {
     setIsModalOpenSignIn(true);
-  }
+  };
 
-    const handleRegister = () => {
-      fetch('http://localhost:3000/users/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstname: signUpFirstname, username: signUpUsername, password: signUpPassword }),
-      }).then(response => response.json())
-        .then(data => {
-          if (data.result) {
-            dispatch(login({ username: signUpUsername, token: data.token }));
-            setSignUpFirstname('');
-            setSignUpUsername('');
-            setSignUpPassword('');
-            setIsModalOpenSignUp(false);
-    } } )};
+  const handleRegister = () => {
+    fetch("http://localhost:3000/users/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: signUpFirstname,
+        username: signUpUsername,
+        password: signUpPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(login({ username: signUpUsername, token: data.token }));
+          setSignUpFirstname("");
+          setSignUpUsername("");
+          setSignUpPassword("");
+          setIsModalOpenSignUp(false);
+        }
+      });
+  };
 
-    const handleConnection = () => {
+  const handleConnection = () => {
+    fetch("http://localhost:3000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: signInUsername,
+        password: signInPassword,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.result) {
+          dispatch(login({ username: signInUsername, token: data.token }));
+          setSignInUsername("");
+          setSignInPassword("");
+          setIsModalOpenSignIn(false);
+        }
+      });
+  };
 
-      fetch('http://localhost:3000/users/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: signInUsername, password: signInPassword }),
-      }).then(response => response.json())
-        .then(data => {
-          if (data.result) {
-            dispatch(login({ username: signInUsername, token: data.token }));
-            setSignInUsername('');
-            setSignInPassword('');
-            setIsModalOpenSignIn(false);
-          }
-        });
-    };
-  
-    return (
+  const handleCancel = () => {
+    setIsModalOpenSignIn(false);
+    setIsModalOpenSignUp(false);
+  };
+
+  return (
     <div className={styles.main}>
       <div className={styles.login}>
         <FontAwesomeIcon
@@ -75,12 +90,27 @@ function Login() {
         <button onClick={() => signUpModal()} className={styles.signup}>
           Sign up
         </button>
-        <Modal open={isModalOpenSignUp} footer={null} closeIcon={null}>
+        <Modal
+          open={isModalOpenSignUp}
+          footer={null}
+          closeIcon={null}
+          maskClosable={true}
+          onCancel={handleCancel}
+          bodyStyle={{ backgroundColor: "#151d26" }}
+        >
           <SignUp handleRegister={handleRegister} />
         </Modal>
         <h5>Already have an account?</h5>
-        <button onClick={() => signInModal()}className={styles.signin}>Sign in</button>
-        <Modal open={isModalOpenSignIn} footer={null} closeIcon={null}>
+        <button onClick={() => signInModal()} className={styles.signin}>
+          Sign in
+        </button>
+        <Modal
+          open={isModalOpenSignIn}
+          footer={null}
+          closeIcon={null}
+          maskClosable={true}
+          onCancel={handleCancel}
+        >
           <SignIn handleConnection={handleConnection} />
         </Modal>
       </div>
