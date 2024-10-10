@@ -21,29 +21,39 @@ function Login() {
     setIsModalOpen(true);
   };
 
-  const handleRegister = () => {
-    fetch("http://localhost:3000/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstname: signUpFirstname,
-        username: signUpUsername,
-        password: signUpPassword,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.result) {
-          dispatch(login({ username: signUpUsername, token: data.token }));
-          setSignUpFirstname("");
-          setSignUpUsername("");
-          setSignUpPassword("");
-          setIsModalOpen(false);
-        }
-      });
-  };
+    const handleRegister = () => {
+      fetch('http://localhost:3000/users/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstname: signUpFirstname, username: signUpUsername, password: signUpPassword }),
+      }).then(response => response.json())
+        .then(data => {
+          if (data.result) {
+            dispatch(login({ username: signUpUsername, token: data.token }));
+            setSignUpFirstname('');
+            setSignUpUsername('');
+            setSignUpPassword('');
+            setIsModalOpen(false);
+    } } )};
 
-  return (
+    const handleConnection = () => {
+
+      fetch('http://localhost:3000/users/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: signInUsername, password: signInPassword }),
+      }).then(response => response.json())
+        .then(data => {
+          if (data.result) {
+            dispatch(login({ username: signInUsername, token: data.token }));
+            setSignInUsername('');
+            setSignInPassword('');
+            setIsModalVisible(false)
+          }
+        });
+    };
+  
+    return (
     <div className={styles.main}>
       <div className={styles.login}>
         <FontAwesomeIcon
