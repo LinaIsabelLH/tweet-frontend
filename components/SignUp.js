@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import styles from '../styles/signup.module.css';
 
-export default function signUp(){
+function signUp(){
 
     return (
         <div className={styles.singUpContainer}>
@@ -14,3 +14,5 @@ export default function signUp(){
     )
 
 };
+
+export default signUp;
