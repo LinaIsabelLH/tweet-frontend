@@ -1,0 +1,51 @@
+.main {
+  background-color: #151d27;
+  color: whitesmoke;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  color: whitesmoke;
+}
+
+.login {
+  padding: 30px;
+}
+
+.signup {
+  background-color: #0066ff;
+  color: #fff;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding: 10px 80px 10px 80px;
+}
+
+.signup:hover {
+    background-color: #005ce6;
+  }
+
+.signin {
+    background-color: #151d27;
+    color: #0066ff;
+    border: 0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 80px 10px 80px;
+    border: solid 1px gray;
+
+}
+
+.titre {
+    font-size: 70px;
+}

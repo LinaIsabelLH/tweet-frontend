@@ -1,14 +1,4 @@
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
-}
 
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
 
 .contentleft {
   background-image: url(/background.png);
@@ -21,12 +11,17 @@
 
 .main {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items:flex-start;
-  background-color: darkblue;
+  flex-direction: row;
+  justify-content: center;
+  width: 100vw;
 }
 
 .contentright {
- background-color: darkblue;
+  background-color: darkblue;
+  width: 60vw;
+}
+
+.logo {
+  color: whitesmoke;
+  font-size: xx-large;
 }

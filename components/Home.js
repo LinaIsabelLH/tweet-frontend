@@ -1,20 +1,25 @@
 import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Login from "./Login";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTwitter} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 function Home() {
   return (
     <div>
-      <main className={styles.main}>
+      <div className={styles.main}>
         <div className={styles.contentleft}>
-          <Image className={styles.logo} src="/logotwitter.png" width={200} height={200} />
+          <FontAwesomeIcon
+            icon={faTwitter}
+            rotation={180}
+            size="2xl"
+            style={{ color: "#ffffff" }}
+          />
         </div>
         <div className={styles.contentright}>
-          <Login></Login>
+          <Login/>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
