@@ -3,7 +3,7 @@ import styles from '../styles/signin.module.css';
 
 
 
-export default function signIn(){
+export default function SignIn(){
 
     return (
         <div className={styles.signInContainer}>
