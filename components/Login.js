@@ -3,13 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Modal } from "antd";
 import SignUp from "./SignUp";
-import SignIn from "./SignIn";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 function Login() {
-  const [isModalOpenSignUp, setIsModalOpenSignUp] = useState(false);
-  const [isModalOpenSignIn, setIsModalOpenSignIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   const [signUpFirstname, setSignUpFirstname] = useState("");
@@ -20,12 +18,8 @@ function Login() {
   const [signInPassword, setSignInPassword] = useState("");
 
   const signUpModal = () => {
-    setIsModalOpenSignUp(true);
+    setIsModalOpen(true);
   };
-
-  const signInModal =()=>{
-    setIsModalOpenSignIn(true);
-  }
 
     const handleRegister = () => {
       fetch('http://localhost:3000/users/signup', {
@@ -39,7 +33,7 @@ function Login() {
             setSignUpFirstname('');
             setSignUpUsername('');
             setSignUpPassword('');
-            setIsModalOpenSignUp(false);
+            setIsModalOpen(false);
     } } )};
 
     const handleConnection = () => {
@@ -54,7 +48,7 @@ function Login() {
             dispatch(login({ username: signInUsername, token: data.token }));
             setSignInUsername('');
             setSignInPassword('');
-            setIsModalOpenSignIn(false);
+            setIsModalVisible(false)
           }
         });
     };
@@ -75,14 +69,11 @@ function Login() {
         <button onClick={() => signUpModal()} className={styles.signup}>
           Sign up
         </button>
-        <Modal open={isModalOpenSignUp}>
+        <Modal footer={null} open={isModalOpen}>
           <SignUp handleRegister={handleRegister} />
         </Modal>
         <h5>Already have an account?</h5>
-        <button onClick={() => signInModal()}className={styles.signin}>Sign in</button>
-        <Modal open={isModalOpenSignIn}>
-          <SignIn handleConnection={handleConnection} />
-        </Modal>
+        <button className={styles.signin}>Sign in</button>
       </div>
     </div>
   );

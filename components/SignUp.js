@@ -7,6 +7,7 @@ function SignUp() {
   return (
     <div className={styles.singUpContainer}>
       <FontAwesomeIcon
+          className={styles.logo}
           icon={faTwitter}
           rotation={180}
           size={"2xl"}

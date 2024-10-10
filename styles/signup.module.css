@@ -17,5 +17,19 @@
 }
 
 .singUpContainer > button {
-    
+    background-color: whitesmoke;
+    color: #151d27;
+    border: 0;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 10px 80px 10px 80px;
+    margin: 10px 0px 40px 0px;
+}
+
+.logo {
+    margin-top: 50px;
 }
