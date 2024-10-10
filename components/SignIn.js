@@ -1,9 +1,18 @@
 import { Modal } from "antd";
 import styles from "../styles/signin.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export default function SignIn() {
   return (
     <div className={styles.signInContainer}>
+      <FontAwesomeIcon
+          className={styles.logo}
+          icon={faTwitter}
+          rotation={180}
+          size={"2xl"}
+          style={{ color: "#ffffff" }}
+        />
       <h1>Connect to Hackatweet</h1>
       <input
         type="text"

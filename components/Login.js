@@ -75,12 +75,12 @@ function Login() {
         <button onClick={() => signUpModal()} className={styles.signup}>
           Sign up
         </button>
-        <Modal open={isModalOpenSignUp}>
+        <Modal open={isModalOpenSignUp} footer={null} closeIcon={null}>
           <SignUp handleRegister={handleRegister} />
         </Modal>
         <h5>Already have an account?</h5>
         <button onClick={() => signInModal()}className={styles.signin}>Sign in</button>
-        <Modal open={isModalOpenSignIn}>
+        <Modal open={isModalOpenSignIn} footer={null} closeIcon={null}>
           <SignIn handleConnection={handleConnection} />
         </Modal>
       </div>
