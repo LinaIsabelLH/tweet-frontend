@@ -36,11 +36,7 @@ function Login() {
             setSignUpFirstname('');
             setSignUpUsername('');
             setSignUpPassword('');
-
-
-
-
-      setIsModalOpen(false);
+            setIsModalOpen(false);
     } } )};
   
     return (
