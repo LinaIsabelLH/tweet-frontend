@@ -6,6 +6,7 @@ import SignUp from "./SignUp";
 import SignIn from "./SignIn";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { login } from '../reducers/user';
 
 function Login() {
   const [isModalOpenSignUp, setIsModalOpenSignUp] = useState(false);
