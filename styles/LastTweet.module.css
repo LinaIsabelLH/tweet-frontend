@@ -1,0 +1,36 @@
+.main {
+    width: 45vw;
+    height: 70vh;
+    background-color: #151d27;
+    border-bottom: solid 2px gray;
+  }
+
+  .user{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: smaller;
+  }
+
+  .user > span {
+    color: gray;
+  }
+
+  .title {
+    color: whitesmoke;
+  }
+
+  .containeur {
+    border: 1px solid grey;
+    padding: 10px 20px;
+  }
+
+  .content {
+    color: whitesmoke;
+    font-size: smaller;
+  }
+
+  .img {
+    border-radius: 50%;
+  }
