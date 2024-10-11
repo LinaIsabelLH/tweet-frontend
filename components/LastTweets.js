@@ -2,7 +2,7 @@ import styles from "../styles/LastTweet.module.css";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import { updateTweet } from "../reducers/tweetRex";
 
@@ -39,7 +39,11 @@ function LastTweet() {
             icon={faHeart}
             style={{ color: "#ffffff", cursor: "pointer" }}
           />
-          <span></span>
+          <span>  </span>
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            style={{ color: "#ffffff", cursor: "pointer" }}
+          />
         </div>
       </div>
     );
