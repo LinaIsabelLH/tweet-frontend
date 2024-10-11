@@ -5,6 +5,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from '../reducers/user';
+import {useRouter} from 'next/router';
 
 
 function SignUp() {
@@ -13,6 +14,7 @@ function SignUp() {
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleRegister = () => {
     fetch('http://localhost:3000/users/signup', {
@@ -23,11 +25,11 @@ function SignUp() {
       .then(data => {
         console.log(data);
         if (data.result) {
-          dispatch(login({ username: signUpUsername, token: data.token }));
+          dispatch(login({firstname: signUpFirstname, username: signUpUsername, token: data.token }));
           setSignUpFirstname('');
           setSignUpUsername('');
           setSignUpPassword('');
-          window.location.assign("/tweets")
+          router.push("/tweets")
   } } ) }
 
 

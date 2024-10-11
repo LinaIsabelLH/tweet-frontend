@@ -5,6 +5,7 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from '../reducers/user';
+import {useRouter} from 'next/router';
 
 
 
@@ -15,6 +16,7 @@ export default function SignIn() {
     const [signInUsername, setSignInUsername] = useState("");
     const [signInPassword, setSignInPassword] = useState("");
     const dispatch = useDispatch();
+    const router = useRouter();
 
 
     const handleConnection = () => {
@@ -26,10 +28,10 @@ export default function SignIn() {
         }).then(response => response.json())
           .then(data => {
             if (data.result) {
-              dispatch(login({ username: signInUsername, token: data.token }));
+              dispatch(login({ username: signInUsername, firstname: data.firstname, token: data.token }));
               setSignInUsername('');
               setSignInPassword('');
-              window.location.assign("/tweets")
+              router.push("/tweets")
             }
           }) }
       
