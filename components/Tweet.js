@@ -14,13 +14,19 @@ function Tweet() {
       body: JSON.stringify({
           firstname: "Joachim",
           username: "Jasmin",
-          message: tweetData,
+          email: "joachim.jasmin@gmail.com",
           date: new Date(),
       }),
   })
       .then((response) => response.json())
-      }
-  ;
+      .then((data) => {
+          if (data.result === true) {
+              console.log("Youpi !")
+          } else {
+              console.log("Moins youpi...")
+          }
+      })
+  };
   
   const length = tweetData.length
   
