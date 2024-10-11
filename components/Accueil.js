@@ -2,8 +2,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import styles from "../styles/Accueil.module.css";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { logout } from '../reducers/user';
 
 function Accueil() {
+
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+		dispatch(logout());
+		window.location.assign("/");
+	};
+
   return (
     <div>
       <div className={styles.main}>
@@ -20,7 +30,7 @@ function Accueil() {
           <div className={styles.user}>
             <span>John</span>
             <span>@JohnCena</span>
-            <div ><button className={styles.button} >Logout</button></div> 
+            <div ><button className={styles.button} onClick={() => handleLogout()}>Logout</button></div> 
           </div>
         </div>
       </div>
