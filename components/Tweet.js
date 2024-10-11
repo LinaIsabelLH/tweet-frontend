@@ -1,32 +1,34 @@
 import styles from "../styles/Tweet.module.css";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {updateTweet} from '../reducers/tweetRex';
 
 
 function Tweet() {
   
   const [tweetData, setTweetData] = useState('');
-  
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  let token = user.token; 
   
   let handleClick = () => {
-    fetch("http://localhost:3000/tweets/post", {
+    fetch(`http://localhost:3000/tweets/post/${token}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-          firstname: "Joachim",
-          username: "Jasmin",
-          email: "joachim.jasmin@gmail.com",
+          message: tweetData,
           date: new Date(),
       }),
   })
       .then((response) => response.json())
-      .then((data) => {
-          if (data.result === true) {
-              console.log("Youpi !")
-          } else {
-              console.log("Moins youpi...")
-          }
-      })
-  };
+      .then(data => {
+        console.log(data);
+        
+        if(data.result){
+          setTweetData('');
+          dispatch(updateTweet());
+      }}) };
+  
   
   const length = tweetData.length
   
