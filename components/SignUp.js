@@ -13,6 +13,7 @@ function SignUp() {
   const [signUpFirstname, setSignUpFirstname] = useState("");
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpPassword, setSignUpPassword] = useState("");
+  
   const dispatch = useDispatch();
   const router = useRouter();
 
