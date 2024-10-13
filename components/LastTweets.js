@@ -12,6 +12,7 @@ import SignIn from "./SignIn";
 
 function LastTweet() {
   const [tweetData, setTweetData] = useState([]);
+  const[isLiked, setIsLiked] = useState(0);
   const tweetRex = useSelector((state) => state.tweetRex.value);
   const userTokenLog = useSelector((state)=> state.user.value.token);
 
@@ -30,12 +31,26 @@ function LastTweet() {
       setTweetData(data.data);
   })};
 
+  let iconHeartStyle;
+  const handleLike = (message)=>{
+    const tweetLiked = tweetData.filter(e => e.message === message);
+    if(tweetLiked){
+    fetch(`http://localhost:3000/tweets/liked/${tweetLiked}`)
+    .then((response) => response.json())
+    .then(data => {
+      console.log(data);
+      if(data){
+        setIsLiked(isLiked+1);
+        iconHeartStyle={'color':'red'}
+      }
+  })}} 
+
 
   const tweet = tweetData.map((data, i) => {
     if(userTokenLog === data.author.token){
       console.log(data);
       return (
-        <div className={styles.containeur}>
+        <div className={styles.containeur} key={i}>
           <div className={styles.user}>
             <Image
               className={styles.img}
@@ -51,9 +66,10 @@ function LastTweet() {
             <p className={styles.msg}>{data.message}</p>
             <FontAwesomeIcon
               icon={faHeart}
-              style={{ color: "#ffffff", cursor: "pointer" }}
+              style={{ color: "#ffffff", cursor: "pointer"}}
+              onClick={()=>handleLike(data.message)}
             />
-            <span>  </span>
+            <span> {isLiked} </span>
             <FontAwesomeIcon
               icon={faTrashCan}
               style={{ color: "#ffffff", cursor: "pointer" }} 
@@ -64,7 +80,7 @@ function LastTweet() {
       );
     } else {
       return (
-        <div className={styles.containeur}>
+        <div className={styles.containeur} key={i}>
           <div className={styles.user}>
             <Image
               className={styles.img}
@@ -80,9 +96,10 @@ function LastTweet() {
             <p className={styles.msg}>{data.message}</p>
             <FontAwesomeIcon
               icon={faHeart}
-              style={{ color: "#ffffff", cursor: "pointer" }}
+              style={{ color: "#ffffff", cursor: "pointer"}}
+              onClick={()=>handleLike(data.message)}
             />
-            <span>  </span>
+            <span> {isLiked} </span>
           </div>
         </div>
       );
